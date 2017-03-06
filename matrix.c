@@ -3,6 +3,7 @@
 #include <math.h>
 
 #include "matrix.h"
+#include "math.h"
 
 
 /*======== struct matrix * make_translate() ==========
@@ -58,6 +59,7 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and X as the axis of rotation.
 ====================*/
 struct matrix * make_rotX(double theta) {
+  double rad = (theta * M_PI) / 180;
   return NULL;
 }
 
@@ -68,6 +70,7 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and Y as the axis of rotation.
 ====================*/
 struct matrix * make_rotY(double theta) {
+  double rad = (theta * M_PI) / 180;
   return NULL;
 }
 
@@ -78,7 +81,14 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and Z as the axis of rotation.
 ====================*/
 struct matrix * make_rotZ(double theta) {
-  return NULL;
+  struct matrix * rotz = new_matrix(4, 4);
+  double rad = (theta * M_PI) / 180;
+  ident(rotz);
+  rotz -> m[0][0] = cos(rad);
+  rotz -> m[0][1] = -1 * sin(rad);
+  rotz -> m[1][0] = sin(rad);
+  rotz -> m[1][1] = cos(rad);
+  return rotz;
 }
 
 
