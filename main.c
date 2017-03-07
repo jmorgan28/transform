@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
   c.green = MAX_COLOR;
   c.blue = 0;
 
-
+  clear_screen(s);
   add_edge(edges3,150,80,0,250,80,0);
   add_edge(edges3,150,80,0,150,280,0);
   add_edge(edges3,250,80,0,250,280,0);
@@ -41,8 +41,9 @@ int main(int argc, char **argv) {
   matrix_mult(make_scale(2,2,2),transform);
   matrix_mult(make_rotZ(45),transform);
   matrix_mult(transform,edges3);
-  //draw_lines(edges3,s,c);
-  //display(s);
+  draw_lines(edges3,s,c);
+  display(s);
+  
   save_extension(s, "matri.png");
 
   edges = new_matrix(4, 4);
