@@ -12,10 +12,10 @@ int main(int argc, char **argv) {
 
   screen s;
   struct matrix * edges;
-  struct matrix * transform;
+  struct matrix * transform = new_matrix(4, 4);
 
   struct matrix * edges3 =  new_matrix(4, 4);
-
+  
   
   color c;
  
@@ -36,8 +36,11 @@ int main(int argc, char **argv) {
   add_edge(edges3,300,320,0,300,120,0);
   add_edge(edges3,200,330,0,250,370,0);
   add_edge(edges3,300,320,0,250,370,0);
-
-  matrix_mult(make_scale(2,2,2),edges3);
+  
+  ident(transform);
+  matrix_mult(make_scale(2,2,2),transform);
+  matrix_mult(make_rotZ(45),transform);
+  matrix_mult(transform,edges3);
   draw_lines(edges3,s,c);
   display(s);
   save_extension(s, "matri.png");
