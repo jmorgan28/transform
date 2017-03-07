@@ -41,20 +41,21 @@ int main(int argc, char **argv) {
   matrix_mult(make_scale(2,2,2),transform);
   matrix_mult(make_rotZ(45),transform);
   matrix_mult(transform,edges3);
-  draw_lines(edges3,s,c);
-  display(s);
+  //draw_lines(edges3,s,c);
+  //display(s);
   save_extension(s, "matri.png");
 
   edges = new_matrix(4, 4);
   transform = new_matrix(4, 4);
 
-  print_matrix(make_rotY(30));
+  //print_matrix(make_rotY(30));
   
-  if ( argc == 2 )
-    parse_file( argv[1], transform, edges, s );
+  if ( argc == 2 ){
+    printf("made it");
+    parse_file( argv[1], transform, edges, s );}
   else
     parse_file( "stdin", transform, edges, s );
-
+  
   
   free_matrix( edges );
   free_matrix( transform );
