@@ -68,28 +68,49 @@ void parse_file ( char * filename,
     printf("this: %d\n", prev);
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
-    if(strcmp("line", line) == 0)
+    int skip = 0;
+    if(strcmp("line", line) == 0){
       prev = 1;
-    if(strcmp("ident", line) ==0)
+      skip = 1;
+    }
+    if(strcmp("ident", line) ==0){
       prev = 2;
-    if(strcmp("scale", line) ==0)
+      skip = 1;
+    }
+    if(strcmp("scale", line) ==0){
       prev = 3;
-    if(strcmp("translate", line)== 0)
+      skip = 1;
+    }
+    if(strcmp("translate", line)== 0){
       prev = 4;
-    if(strcmp("rotate", line) == 0)
+      skip = 1;
+    }
+    if(strcmp("rotate", line) == 0){
       prev = 5;
-    if(strcmp("apply", line) == 0)
+      skip = 1;
+    }
+    if(strcmp("apply", line) == 0){
       prev = 6;
-    if(strcmp("display", line) == 0)
+      skip = 1;
+    }
+    if(strcmp("display", line) == 0){
+      skip = 1;
       prev = 7;
-    if(strcmp("save", line) == 0)
+    }
+    if(strcmp("save", line) == 0){
+      skip = 1;
       prev = 8;
-    if(strcmp("quit", line) == 0)
+    }
+    if(strcmp("quit", line) == 0){
+      skip = 1;
       prev = 9;
-    if(prev == 1){
-      char * a = line;
-      printf("value: %s\n", strsep(&a, " "));
-      printf("you got this\n");
+    }
+    if(skip != 1){
+      if(prev == 1){
+	char * a = line;
+	printf("value: %s\n", strsep(&a, " "));
+	printf("you got this\n");
+      }
     }
   }
 }
