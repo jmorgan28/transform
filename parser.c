@@ -52,23 +52,42 @@ void parse_file ( char * filename,
                   struct matrix * transform, 
                   struct matrix * edges,
                   screen s) {
-  int prev = 0;
+  
   FILE *f;
   char line[256];
   clear_screen(s);
-
   if ( strcmp(filename, "stdin") == 0 ) 
     f = stdin;
   else
     f = fopen(filename, "r");
-  
+
+
+  int prev = 0;
+
   while ( fgets(line, 255, f) != NULL ) {
+    printf("this: %d\n", prev);
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
-    if(strcmp("line", line))
+    if(strcmp("line", line) == 0)
       prev = 1;
-    if(prev = 1)
-      printf("you got this");
+    if(strcmp("ident", line) ==0)
+      prev = 2;
+    if(strcmp("scale", line) ==0)
+      prev = 3;
+    if(strcmp("translate", line)== 0)
+      prev = 4;
+    if(strcmp("rotate", line) == 0)
+      prev = 5;
+    if(strcmp("apply", line) == 0)
+      prev = 6;
+    if(strcmp("display", line) == 0)
+      prev = 7;
+    if(strcmp("save", line) == 0)
+      prev = 8;
+    if(strcmp("quit", line) == 0)
+      prev = 9;
+    if(prev == 1)
+      printf("you got this\n");
   }
 }
   
