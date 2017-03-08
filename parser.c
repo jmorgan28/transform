@@ -86,8 +86,11 @@ void parse_file ( char * filename,
       prev = 8;
     if(strcmp("quit", line) == 0)
       prev = 9;
-    if(prev == 1)
+    if(prev == 1){
+      char * a = line;
+      printf("value: %s\n", strsep(&a, " "));
       printf("you got this\n");
+    }
   }
 }
   
