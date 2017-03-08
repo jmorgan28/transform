@@ -52,7 +52,7 @@ void parse_file ( char * filename,
                   struct matrix * transform, 
                   struct matrix * edges,
                   screen s) {
-
+  int prev = 0;
   FILE *f;
   char line[256];
   clear_screen(s);
@@ -64,7 +64,11 @@ void parse_file ( char * filename,
   
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
-    printf(":%s:\n",line);
+    //printf(":%s:\n",line);
+    if(strcmp("line", line))
+      prev = 1;
+    if(prev = 1)
+      printf("you got this");
   }
 }
   
