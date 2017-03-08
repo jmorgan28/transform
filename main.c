@@ -50,8 +50,8 @@ int main(int argc, char **argv) {
   transform = new_matrix(4, 4);
 
   //print_matrix(make_rotY(30));
-  printf("%s\n", argv[1]);
-  printf("%d\n", argc);
+  //printf("%s\n", argv[1]);
+  //printf("%d\n", argc);
   
   if ( argc == 2 ){
     printf("made it");
