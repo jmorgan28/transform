@@ -132,6 +132,20 @@ void parse_file ( char * filename,
 	int tz = atoi(strsep(&a, " "));
 	matrix_mult(make_translate(tx,ty,tz), transform);
       }
+      if(prev == 5){
+	char * a = line;
+	char * which= strsep(&a, " ");
+	int angle = atoi(strsep(&a, " "));
+	if(strcmp(which, "x") == 0){
+	  matrix_mult( make_rotX(angle), transform);
+	}
+	if(strcmp(which, "y") == 0){
+	  matrix_mult( make_rotY(angle), transform);
+	}
+	if(strcmp(which, "z") == 0){
+	  matrix_mult( make_rotZ(angle), transform);
+	}
+      }
     }
   }
 }
