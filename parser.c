@@ -158,6 +158,12 @@ void parse_file ( char * filename,
 	  matrix_mult( make_rotZ(angle), transform);
 	}
       }
+      if(prev == 8){
+	draw_lines(edges,s,c);
+	char * a = line;
+	char * name= strsep(&a, " ");
+	save_extension(s, name);
+      }	
     }
   }
 }
