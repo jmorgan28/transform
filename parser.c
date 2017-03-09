@@ -74,7 +74,6 @@ void parse_file ( char * filename,
   int prev = 0;
 
   while ( fgets(line, 255, f) != NULL ) {
-    printf("this: %d\n", prev);
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
     int skip = 0;
@@ -117,6 +116,7 @@ void parse_file ( char * filename,
     if(strcmp("quit", line) == 0){
       skip = 1;
       prev = 9;
+      exit(0);
     }
     if(skip != 1){
       if(prev == 1){
