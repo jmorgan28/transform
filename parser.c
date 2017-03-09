@@ -90,7 +90,7 @@ void parse_file ( char * filename,
       prev = 3;
       skip = 1;
     }
-    if(strcmp("translate", line)== 0){
+    if(strcmp("move", line)== 0){
       prev = 4;
       skip = 1;
     }
@@ -104,6 +104,7 @@ void parse_file ( char * filename,
       skip = 1;
     }
     if(strcmp("display", line) == 0){
+      clear_screen(s);
       draw_lines(edges,s,c);
       display(s);
       skip = 1;
