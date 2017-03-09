@@ -123,8 +123,14 @@ void parse_file ( char * filename,
 	int my = atoi(strsep(&a, " "));
 	int mz = atoi(strsep(&a, " "));
 	matrix_mult(make_scale(mx,my,mz), transform);
-	print_matrix(transform);
 
+      }
+      if(prev == 4){
+	char * a = line;
+	int tx = atoi(strsep(&a, " "));
+	int ty = atoi(strsep(&a, " "));
+	int tz = atoi(strsep(&a, " "));
+	matrix_mult(make_translate(tx,ty,tz), transform);
       }
     }
   }
