@@ -75,6 +75,7 @@ void parse_file ( char * filename,
     }
     if(strcmp("ident", line) ==0){
       prev = 2;
+      ident(transform);
       skip = 1;
     }
     if(strcmp("scale", line) ==0){
@@ -115,6 +116,15 @@ void parse_file ( char * filename,
 	int y1 = atoi(strsep(&a, " "));
 	int z1 = atoi(strsep(&a, " "));
 	add_edge(edges,x0,y0,z0,x1,y1,z1);
+      }
+      if(prev == 3){
+	char * a = line;
+	int mx = atoi(strsep(&a, " "));
+	int my = atoi(strsep(&a, " "));
+	int mz = atoi(strsep(&a, " "));
+	matrix_mult(make_scale(mx,my,mz), transform);
+	print_matrix(transform);
+
       }
     }
   }
