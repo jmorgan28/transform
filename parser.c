@@ -92,6 +92,7 @@ void parse_file ( char * filename,
     }
     if(strcmp("apply", line) == 0){
       prev = 6;
+      matrix_mult(transform, edges);
       skip = 1;
     }
     if(strcmp("display", line) == 0){
