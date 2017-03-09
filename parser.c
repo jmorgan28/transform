@@ -108,8 +108,13 @@ void parse_file ( char * filename,
     if(skip != 1){
       if(prev == 1){
 	char * a = line;
-	printf("value: %s\n", strsep(&a, " "));
-	printf("you got this\n");
+	int x0 = atoi(strsep(&a, " "));
+	int y0 = atoi(strsep(&a, " "));
+	int z0 = atoi(strsep(&a, " "));
+	int x1 = atoi(strsep(&a, " "));
+	int y1 = atoi(strsep(&a, " "));
+	int z1 = atoi(strsep(&a, " "));
+	add_edge(edges,x0,y0,z0,x1,y1,z1);
       }
     }
   }
